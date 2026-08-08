@@ -3,7 +3,7 @@ const Persons = ({persons, search}) => {
       persons.filter(person => person.name.toLowerCase().includes(search.toLowerCase())).map((person) => {
         return (
           <div key={person.name}>
-            {person.name} {person.phone}
+            {person.name} {person.number}
           </div>
         )
       })
