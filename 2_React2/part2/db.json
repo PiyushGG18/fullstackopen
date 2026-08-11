@@ -1,19 +1,50 @@
 {
-    "notes": [
-        {
-            "id": "1",
-            "content": "HTML is easy",
-            "important": true
-        },
-        {
-            "id": "2",
-            "content": "Browser can execute only JavaScript",
-            "important": false
-        },
-        {
-            "id": "3",
-            "content": "GET and POST are the most important methods of HTTP protocol",
-            "important": true
-        }
-    ]
+  "notes": [
+    {
+      "id": "1",
+      "content": "HTML is easy",
+      "important": false
+    },
+    {
+      "id": "2",
+      "content": "Browser can execute only JavaScript",
+      "important": true
+    },
+    {
+      "id": "3",
+      "content": "GET and POST are the most important methods of HTTP protocol",
+      "important": false
+    },
+    {
+      "content": "Adding new note here",
+      "important": true,
+      "id": "3GGhgXBLw5M"
+    },
+    {
+      "content": "new file after reload",
+      "important": false,
+      "id": "95XyTk5J48s"
+    },
+    {
+      "content": "check with autoreload",
+      "important": false,
+      "id": "b8RFz-YexmQ"
+    },
+    {
+      "content": "works fine",
+      "important": true,
+      "id": "2qyATjh4euA"
+    },
+    {
+      "content": "new note",
+      "important": true,
+      "id": "0TEWjsQMsus"
+    },
+    {
+      "content": "Testing the change functionality",
+      "important": false,
+      "id": "lQrs8YmsrZs"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
