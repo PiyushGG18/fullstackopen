@@ -17,12 +17,12 @@
     },
     {
       "content": "Adding new note here",
-      "important": true,
+      "important": false,
       "id": "3GGhgXBLw5M"
     },
     {
       "content": "new file after reload",
-      "important": false,
+      "important": true,
       "id": "95XyTk5J48s"
     },
     {
