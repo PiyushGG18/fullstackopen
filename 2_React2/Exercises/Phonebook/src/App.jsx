@@ -73,7 +73,6 @@ const App = () => {
 
   const handleDelete = (person) => {
       if(window.confirm(`Delete ${person.name}`)){
-        console.log('deleting', person.id);
         personServices.Delete(person).then(response => {
           setPersons(persons.filter(p => p.id !== person.id))
         })

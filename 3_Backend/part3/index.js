@@ -10,7 +10,6 @@ app.use(express.static('dist'))
 app.use(express.json())
 
 
-
 let notes = [
     {
         id: "1",
@@ -39,21 +38,10 @@ const requestLogger = (request, response, next) => {
 
 app.use(requestLogger)
 
-const errorHandler = (eror, request, response, next) => {
-    console.log(error.message)
-
-    if(error.name === "CastError"){
-        return response.status(400).send({error: 'malformed id'})
-    }
-
-    next(error)
-}
-
-app.use(errorHandler)
 
 const generateId = () => {
     const maxId = notes.length > 0
-        ? Math.max(...notes.map(n => Number(n.id)))
+    ? Math.max(...notes.map(n => Number(n.id)))
         : 0
     return String(maxId + 1)
 }
@@ -79,6 +67,7 @@ app.get('/api/notes/:id', (request, response, next) => {
     })
     .catch(error => next(error))
 })
+
 
 app.post('/api/notes', (request, response) => {
     const body = request.body
@@ -129,8 +118,18 @@ app.delete('/api/notes/:id', (request, response, next) => {
 const unknownEndpoint = (request, response) => {
     response.status(404).send({ error: 'unknown endpoint' })
 }
-
 app.use(unknownEndpoint)
+
+const errorHandler = (error, request, response, next) => {
+    console.log(error.message)
+
+    if(error.name === "CastError"){
+        return response.status(400).send({error: 'malformed id'})
+    }
+
+    next(error)
+}
+app.use(errorHandler)
 
 const PORT = process.env.PORT 
 app.listen(PORT, () => {
