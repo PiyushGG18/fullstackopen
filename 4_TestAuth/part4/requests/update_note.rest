@@ -1,0 +1,7 @@
+PUT http://localhost:3001/api/notes/6a7ecbd169f26bfe394c6bec
+Content-Type: application/json
+
+{
+    "content": "NodeJs and backend servers2",
+    "important": false
+}
