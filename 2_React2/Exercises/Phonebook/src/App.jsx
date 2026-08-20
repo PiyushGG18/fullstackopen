@@ -60,15 +60,22 @@ const App = () => {
       number: newPhone,
     }
 
-    personServices.create(newPerson).then(response => {
-      setPersons(persons.concat(response))
-      setMessage(`Added ${response.name}`)
-      setTimeout(() => {
-        setMessage(null)
-      }, 5000)
-      setNewName('')
-      setNewPhone('')
-    })
+    personServices.create(newPerson)
+      .then(response => {
+        setPersons(persons.concat(response))
+        setMessage(`Added ${response.name}`)
+        setTimeout(() => {
+          setMessage(null)
+        }, 5000)
+        setNewName('')
+        setNewPhone('')
+      })
+      .catch(error => {
+        setError(`${error.response.data.error}`)
+        setTimeout(() => {
+          setError(null)
+        }, 5000)
+      })
   }
 
   const handleDelete = (person) => {
