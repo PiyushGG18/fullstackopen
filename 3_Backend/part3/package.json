@@ -11,12 +11,19 @@
     "deploy:full": "npm run build:ui && cd ../../ && git add . && git commit -m uibuild && git push",
     "start": "node index.js",
     "dev": "nodemon --legacy-watch index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
   },
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.9.2",
     "nodemon": "^3.1.14"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.8.1",
+    "globals": "^17.11.0"
   }
 }
