@@ -82,6 +82,36 @@ test('Missing title and url is rejected', async () => {
     assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length)
 })
 
+test('Delete of single post must return statuscode 204 if id is valid', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToDelete = blogsAtStart[0]
+
+    await api
+        .delete(`/api/blogs/${blogToDelete.id}`)
+        .expect(204)
+    
+    const blogsAtEnd = await helper.blogsInDb()
+
+    const ids = blogsAtEnd.map(b => b.id)
+    assert(!ids.includes(blogToDelete.id))
+
+    assert.strictEqual(blogsAtEnd.length, helper.initialBlogs.length - 1)
+})
+
+test('Update of likes on post return 200 if id is valid', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToUpdate = blogsAtStart[0]
+    const blog = {likes: blogToUpdate.likes + 5}
+
+    await api
+        .put(`/api/blogs/${blogToUpdate.id}`)
+        .send(blog)
+        .expect(200)
+    
+    const blogsAtEnd = await helper.blogsInDb()
+    assert.notStrictEqual(blogsAtEnd[0].likes, blogsAtStart[0].likes)
+})
+
 
 after(async () => {
     await mongoose.connection.close()
